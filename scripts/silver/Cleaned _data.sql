@@ -1,7 +1,8 @@
+/*
 ===========================================================================================
 --Correction on all the datasets which are in bronze and inserting them into created tables
 ===========================================================================================
-
+*/
 --Inserting Corrected data to silver.crm_cust_info
 INSERT INTO silver.crm_cust_info (
 			cst_id, 
