@@ -5,6 +5,8 @@
 ===========================================================================================
 */
 --Inserting Corrected data to silver.crm_cust_info
+--Here i swapped the column names of marital status and corrected.
+--please check while using this code and insert correctly by giving values to columns..
 INSERT INTO silver.crm_cust_info (
 			cst_id, 
 			cst_key, 
@@ -70,6 +72,12 @@ INSERT INTO silver.crm_prd_info (
 				AS DATE
 			) AS prd_end_dt -- Calculate end date as one day before the next start date
 		FROM bronze.crm_prd_info
+
+EXEC sp_rename 'silver.crm_cust_info.cst_marital_status', 'temp_col', 'COLUMN';
+EXEC sp_rename 'silver.crm_cust_info.cst_gndr', 'cst_marital_status', 'COLUMN';
+EXEC sp_rename 'silver.crm_cust_info.temp_col', 'cst_gndr', 'COLUMN';
+
+--here i mistakenly column names of marital status and gender swpped. and corrected.
 --inserted sucessfully to silver.crm_prd_info
 
 --Inserting corrected data to silver.crm_sales_details
